@@ -28,15 +28,15 @@ export function handleItemBought(event: ItemBoughtEvent): void {
   if (!itemBought) {
     itemBought = new ItemBought(
       getIdFromEventParams(event.params.tokenId, event.params.nftAddress)
-    );
+    )
   }
-  itemBought.buyer = event.params.buyer;
-  itemBought.nftAddress = event.params.nftAddress;
-  itemBought.tokenId = event.params.tokenId;
-  activeItem!.buyer = event.params.buyer;
+  itemBought.buyer = event.params.buyer
+  itemBought.nftAddress = event.params.nftAddress
+  itemBought.tokenId = event.params.tokenId
+  activeItem!.buyer = event.params.buyer
 
-  itemBought.save();
-  activeItem!.save();
+  itemBought.save()
+  activeItem!.save()
 }
 
 export function handleItemCanceled(event: ItemCanceledEvent): void {
@@ -51,15 +51,15 @@ export function handleItemCanceled(event: ItemCanceledEvent): void {
       getIdFromEventParams(event.params.tokenId, event.params.nftAddress)
     );
   }
-  itemCanceled.seller = event.params.seller;
-  itemCanceled.nftAddress = event.params.nftAddress;
-  itemCanceled.tokenId = event.params.tokenId;
-  activeItem!.buyer.Address.fromString(
+  itemCanceled.seller = event.params.seller
+  itemCanceled.nftAddress = event.params.nftAddress
+  itemCanceled.tokenId = event.params.tokenId
+  activeItem!.buyer = Address.fromString(
     "0x000000000000000000000000000000000000dEaD"
   );
 
-  itemCanceled.save();
-  activeItem!.save();
+  itemCanceled.save()
+  activeItem!.save()
 }
 
 export function handleItemListed(event: ItemListedEvent): void {
@@ -93,10 +93,10 @@ export function handleItemListed(event: ItemListedEvent): void {
 
   activeItem.buyer = Address.fromString(
     "0x0000000000000000000000000000000000000000"
-  );
+  )
 
-  itemListed.save();
-  activeItem.save();
+  itemListed.save()
+  activeItem.save()
 }
 
 function getIdFromEventParams(tokenId: BigInt, nftAddress: Address): string {
